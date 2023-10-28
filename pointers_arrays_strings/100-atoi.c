@@ -1,32 +1,41 @@
-#include <stdlib.h>
-#include <time.h>
-#include "main.h"
+#include <stdio.h>
 
-/**
-* _atoi -  Entrypoint
-* Description: 'the program's description _atoi
-* @str : 1 param
-*  Return: Always 0 (Success)
-*/
+int _atoi(char *s) {
+    int result = 0;
+    int sign = 1; // Initialize sign to positive
 
-int _atoi(char *str)
-{
-	int result, puiss, i = 0, j = 0;
+    // Skip leading whitespace
+    while (*s == ' ' || *s == '\t' || *s == '\n')
+        s++;
 
-	result = 0;
-	puiss = 1;
-	while (('-' == *(str + j)) || (*(str + j) == '+'))
-	{
-		if (*str == '-')
-			puiss = puiss * -1;
-		j++;
-	}
-	while ((str[i] >= '0') && (str[i] <= '9'))
-	{
-		result = (result * 10) + (str[i] - '0');
-		i++;
-		if (*(str + i) < '0' || *(str + i) > '9' || *(str + i) == '\0')
-		break;
-	}
-	return (result * puiss);
+    // Check for leading '+' or '-'
+    if (*s == '-') {
+        sign = -1;
+        s++;
+    } else if (*s == '+') {
+        s++;
+    }
+
+    // Iterate through the string and accumulate the numeric value
+    while (*s >= '0' && *s <= '9') {
+        // Check for integer overflow
+        if (result > (2147483647 - (*s - '0')) / 10) {
+            if (sign == 1) {
+                return 2147483647;
+            } else {
+                return -2147483648;
+            }
+        }
+        result = result * 10 + (*s - '0');
+        s++;
+    }
+
+    return result * sign;
+}
+
+int main() {
+    char str[] = "   -12345";
+    int result = _atoi(str);
+    printf("Result: %d\n", result);
+    return 0;
 }
