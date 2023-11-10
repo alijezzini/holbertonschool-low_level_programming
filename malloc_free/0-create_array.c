@@ -1,7 +1,9 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include"main.h"
-
+/**
+**create_array - function create a array
+*/
 char *create_array(unsigned int size, char c)
 {
 	unsigned int i;
