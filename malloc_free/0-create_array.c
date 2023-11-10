@@ -3,6 +3,9 @@
 #include"main.h"
 /**
 **create_array - function create a array
+*@size: variable int
+*@c: variable char
+*Return: char pointer
 */
 char *create_array(unsigned int size, char c)
 {
