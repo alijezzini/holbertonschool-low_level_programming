@@ -29,13 +29,5 @@ int main(void) {
     // Create and initialize the array
     char* myArray = create_array(size, initialValue);
 
-    // Print the elements of the array
-    for (int i = 0; i < size; i++) {
-        printf("%c ", myArray[i]);
-    }
-
-    // Don't forget to free the allocated memory
-    free(myArray);
-
     return 0;
 }
