@@ -12,10 +12,11 @@ char *create_array(unsigned int size, char c)
 	{
 		return (NULL);
 	}
-	i = 0;
-	if(a==0){
+	if (a == 0)
+	{
 		return (NULL);
 	}
+	i = 0;
 	while (i < size)
 	{
 		a[i] = c;
@@ -24,4 +25,3 @@ char *create_array(unsigned int size, char c)
 	a[i] = '\0';
 	return (a);
 }
-
